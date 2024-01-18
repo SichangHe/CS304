@@ -28,7 +28,6 @@ online endpointing format: push to talk, hit to talk, continuous listening
 
 spectrogram: energy distribution over frequency vs time
 
-
 1. preemphasize speech signal: boost high frequency
 
     $$
@@ -60,3 +59,42 @@ spectrogram: energy distribution over frequency vs time
     - subtract the mean to remove microphone/noise difference
         - microphone response is speech with convolution
         - convolution -DFT → multiplication -log → summation
+
+longest common subsequence: dynamic programming, dummy char padding, streaming,
+search trellis, sub-trellis, lexical tree
+
+- pruning: hard threshold vs beam search
+
+DTW: dynamic time warping: disallow skipping (vertical on trellis),
+non-linear mapping (super diagonal)
+
+- $P_{i,j}$: best path cost from origin to $(i,j)$
+- $C_{i,j}$: local node cost (vector distance)
+- global beam across templates for beam search
+- combine multiple template
+    - template averaging: first align templates by DTW
+    - template segmentation: compress chunks of same phoneme
+    - actual method: iterate from uniform segments to stabilize variance
+
+Mahalanobis distance
+
+$$
+d(x,m_j) = (x-m_j)^TC_j^{-1}(x-m_j)
+$$
+
+- can be estimated with negative Gaussian log likelihood
+
+covariance
+
+$$
+\Sigma = \begin{pmatrix}
+    \sigma_{11} & \sigma_{12} & \cdots & \sigma_{1d}\\
+    \sigma_{21} & \sigma_{22} & \cdots & \sigma_{2d}\\
+    \vdots & \vdots & \ddots & \vdots\\
+    \sigma_{d1} & \sigma_{d2} & \cdots & \sigma_{dd}\\
+\end{pmatrix}
+$$
+
+- estimated with diagonal covariance matrix when elements largely uncorrelated
+
+self-transition penalty: model phoneme duration
