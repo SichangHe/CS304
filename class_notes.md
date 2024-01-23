@@ -84,6 +84,12 @@ $$
 
 - can be estimated with negative Gaussian log likelihood
 
+$$
+d(x,m_j) = \frac{1}{2}\log \left(
+    (2\pi)^D|C_j|
+\right)+(x-m_j)^TC_j^{-1}(x-m_j)
+$$
+
 covariance
 
 $$
@@ -98,3 +104,35 @@ $$
 - estimated with diagonal covariance matrix when elements largely uncorrelated
 
 self-transition penalty: model phoneme duration
+
+MFCC (Mel frequency cepstrum coefficient)
+
+dynamic time warping (DTW)
+
+- align multiple training sample
+    1. segment all model sample uniformly by #phoneme, and average
+    1. align each sample against model sample to get new segment and new average
+    1. iterate until convergence
+- transition probability: #segment switch over #frame in segment
+
+hidden Markov model for DTW
+
+- use log probability so total score is log total probability
+
+expectation-maximization (EM) algorithm
+
+1. initialize with k-means clustering
+1. auxiliary function:
+    conditional expectation of the complete data log likelihood
+
+    $$
+    Q(\Theta,\Theta^{(t)}) = \sum_yp(y|X,\Theta^t)\log(p(X,y|\Theta))
+    $$
+
+1. evaluate $\Theta^{t+1}$
+
+    $$
+    \Theta^{t+1} = \argmax_\Theta Q(\Theta,\Theta^t)
+    $$
+
+1. iterate until convergence
