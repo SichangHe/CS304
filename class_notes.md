@@ -118,6 +118,8 @@ dynamic time warping (DTW)
 hidden Markov model for DTW
 
 - use log probability so total score is log total probability
+- simulation by transition probability matrix $T$ (each row sum to 1)
+- initial probability $\pi$
 
 expectation-maximization (EM) algorithm
 
@@ -136,3 +138,10 @@ expectation-maximization (EM) algorithm
     $$
 
 1. iterate until convergence
+
+forward algorithm
+
+1. initialize $\alpha(s,1)=\pi_s P(o_t|s)$
+1. iterate $\alpha(s,t+1)=\sum_{s'}\alpha(s',1)P(s|s')P(o_{t+1}|s)$
+
+Baum Welch: soft state alignment
