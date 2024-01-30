@@ -145,3 +145,25 @@ forward algorithm
 1. iterate $\alpha(s,t+1)=\sum_{s'}\alpha(s',1)P(s|s')P(o_{t+1}|s)$
 
 Baum Welch: soft state alignment
+
+log-domain math
+
+$$
+\log(x^y)=\log(x)2^{\log(y)}\\
+\log(x+y)=\log(x)+\log(1+2^{\log(y)-\log(x)})
+$$
+
+continuous text recognition: small-scale problem, e.g. voice command
+
+- wrap back from end of template to start dummy variable
+    - high wrap back cost → discourage space
+- lextree
+- non-emitting state/ null state: only for connecting, no self-transition
+- prior probability for word: add to the start of its HMM
+- word transition probability for edge cost between word HMM
+- approximate sentence probability with best path
+
+grammar: only focus on syntax not semantics
+
+- finite-state grammar (FSG)
+- context-free grammar (CFG)
