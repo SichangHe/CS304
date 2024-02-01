@@ -159,6 +159,7 @@ continuous text recognition: small-scale problem, e.g. voice command
     - high wrap back cost → discourage space
 - lextree
 - non-emitting state/ null state: only for connecting, no self-transition
+    - no transition time
 - prior probability for word: add to the start of its HMM
 - word transition probability for edge cost between word HMM
 - approximate sentence probability with best path
@@ -167,3 +168,9 @@ grammar: only focus on syntax not semantics
 
 - finite-state grammar (FSG)
 - context-free grammar (CFG)
+- backpointer: only word-level, additional script on word transition
+
+training with continuous speech: bootstrap & iterate
+
+- silence: silence model, $\varepsilon$ bypass arc, self-loop non-emitting state
+    - loop need to go through emitting state, else infinite
