@@ -174,3 +174,13 @@ training with continuous speech: bootstrap & iterate
 
 - silence: silence model, $\varepsilon$ bypass arc, self-loop non-emitting state
     - loop need to go through emitting state, else infinite
+
+N-gram
+
+- N-gram assumption: $P(w_k|w_1,…,w_{k-1})=P(w_k|w_{k-(n-1)},…,w_{k-1})$
+- start/end of sentence: `<s>`, `</s>`
+- unigram, bigram. 5-gram good enough for commercial use
+- N-gram with D words need $\sum_{i=1}^{N-1}D^i$ transition node
+- good Turing
+    - Zipf's law
+- backoff
