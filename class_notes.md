@@ -184,3 +184,27 @@ N-gram
 - good Turing
     - Zipf's law
 - backoff
+
+state-of-the-art system
+
+- unit of sound by clustering large unlabelled dataset
+- transfer learning with small labeled dataset
+
+phoneme: 39 English, Mandarin with tone
+
+- few rare phoneme, much more common than rare word → beat Zipf's law
+- defined by linguistic, or learned by clustering
+- mono-phone/tri-phone: context-independent/dependent (for neighbor)
+- absorbing/generating state → non-emitting
+- locus: stable centers in spectrum
+
+multiple pronunciation: multiple internal model + probability
+
+mono-phone/ context-independent (CI) model
+
+di-phone: model previous and current phoneme. problem: cross-word effect
+
+tri-phone: model multiple current phoneme based on previous and next phoneme
+
+- many cases not seen, back off to mono-phone
+- share Gaussian with mono-phone, different weight
