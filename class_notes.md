@@ -208,3 +208,6 @@ tri-phone: model multiple current phoneme based on previous and next phoneme
 
 - many cases not seen, back off to mono-phone
 - share Gaussian with mono-phone, different weight
+    - decision tree
+
+inexact search: run n-gram on (n-1)-gram model by applying word-transition prob
